@@ -1,0 +1,13 @@
+FROM node:alpine
+
+WORKDIR '/app'
+
+COPY package.json .
+RUN yarn install
+
+# NOTE(Devin): Could get rid of this in theory
+# because docker-compose's volume feature allows us to reference
+# files on the hosts machine. But keep it around for completeness
+COPY . .
+
+CMD ["yarn", "start"]
