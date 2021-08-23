@@ -11,6 +11,9 @@ RUN yarn build
 # Second Phase
 FROM nginx
 
+# NOTE(Devin): I actually didn't need to do this (it worked without this)
+EXPOSE 80
+
 # /usr/share... is the default static serve location
 COPY --from=builder /app/build /usr/share/nginx/html
 
